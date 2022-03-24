@@ -10,6 +10,7 @@ void goRight();
 void goUp();
 void goDown();
 bool isEat();
-void plusBody();
+void addPoint();
 void writeScore();
 bool isAlive(int x, int y);
+int randPoint(int Min, int Max); // random trong khoang Min Max
