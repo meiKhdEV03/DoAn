@@ -8,9 +8,9 @@ int main()
 {
 	FixConsoleWindow();
 	Nocursortype();
+	drawBoard(1);
 	while (1) {
 		bool isOver = false;
-		drawBoard(1);
 		mainMenu();
 		system("cls");
 		drawBoard(0);
