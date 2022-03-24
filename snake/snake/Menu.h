@@ -34,3 +34,4 @@ void mainMenu();
 void levelMenu();
 void drawMenu(int bg, int ed, int cdt);
 int Level();
+void highscoreMenu();

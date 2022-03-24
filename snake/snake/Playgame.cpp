@@ -48,6 +48,7 @@ bool isAlive(int x, int y)
 }
 void drawSnake()
 {
+	setColor(12);
 	for (int i = 0; i < snake.size(); i++)
 	{
 		gotoXY(snake[i].x, snake[i].y);
@@ -72,6 +73,7 @@ bool isOutside(int x, int y)
 }
 void drawFood()
 {
+	setColor(12);
 	food.x = randPoint(1, length_CS1);
 	food.y = randPoint(1, width_CS);
 	gotoXY(food.x, food.y);

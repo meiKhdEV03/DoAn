@@ -60,10 +60,12 @@ void drawBoard(int speed) // thoi gian Sleep
 		printf("%c", 179);
 		Sleep(speed);
 	}
-	setColor(33);
-	for (int i = width_CS; i >= 1; i--)
+	setColor(34);
+	for (int i = 1; i <= width_CS / 2; i++)
 	{
 		gotoXY(length_CS1 + 1, i);
+		printf("%c", 179);
+		gotoXY(length_CS1 + 1, width_CS + 1 - i);
 		printf("%c", 179);
 		Sleep(speed);
 	}
@@ -87,11 +89,6 @@ void readFile()
 		i++;
 	}
 	fp.close();
-}
-void outFile()
-{
-	for (int i = 0; i < 5; i++)
-		cout << lines[i] << "  " << diem[i] << endl;
 }
 void setStringBox()
 {
@@ -144,13 +141,12 @@ void drawBox(int x, int y, int length, int width)
 void drawMenu(int bg, int ed, int cdt) // Ve tu` o bg den' o ed nhung to dam. o cdt
 {
 	for (int i = bg; i < ed; i++) {
-		setColor(12);
+		setColor(15);
 		drawBox(box[i].x, box[i].y, box[i].length, box[i].width);
 		if (i == cdt)
 			setColor(140);
 		writeText(box[i].x, box[i].y, box[i].length, str[i]);
 	}
-	setColor(12);
 }
 void mainMenu()
 {
@@ -197,7 +193,7 @@ void mainMenu()
 						inHighscore = true;
 						system("cls");
 						drawBoard(0);
-						outFile();
+						highscoreMenu();
 					}
 					if (idMainMenu == 3) {
 						inIntroduction = true;
@@ -207,7 +203,7 @@ void mainMenu()
 					inMainMenu = false;
 				}
 			}
-			else if (inLevelMenu) {
+			if (inLevelMenu) {
 				if (c == 'w' || c == 'W') {
 					if (idLevelMenu != 4) {
 						idLevelMenu--;
@@ -234,19 +230,20 @@ void mainMenu()
 					drawMenu(0, 4, idMainMenu);
 				}
 			}
-			else if (inHighscore) {
+			if (inHighscore) {
 				if (c == 27) {
 					inMainMenu = true;
-					inHighscore = false;
+					inHighscore = false;;
 					system("cls");
 					drawBoard(0);
 					drawMenu(0, 4, idMainMenu);
 				}
 			}
-			else if (inIntroduction) {
+			if (inIntroduction) {
 				if (c == 27) {
 					inMainMenu = true;
 					inIntroduction = false;
+					setColor(1);
 					system("cls");
 					drawBoard(0);
 					drawMenu(0, 4, idMainMenu);
@@ -310,5 +307,19 @@ void writeText(int x, int y, int length, string txt)
 }
 int Level() {
 	return Lv;
+}
+void highscoreMenu() {
+	setColor(6);
+	gotoXY(length_CS1 / 2 - 8, 9);
+	cout << "Player";
+	gotoXY(length_CS1 / 2 + 8, 9);
+	cout << "Score";
+	setColor(9);
+	for (int i = 0; i < 5; i++) {
+		gotoXY(length_CS1 / 2 - 8, 12 +i);
+		cout << lines[i];
+		gotoXY(length_CS1 / 2 + 8, 12 + i);
+		cout << diem[i];
+	}
 }
 
