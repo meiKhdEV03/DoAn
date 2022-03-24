@@ -1,0 +1,11 @@
+{
+  "Version": 1,
+  "ProjectMap": {
+    "913ec242-0948-4c90-9a57-7db3b6b2b56f": {
+      "ProjectGuid": "913ec242-0948-4c90-9a57-7db3b6b2b56f",
+      "DisplayName": "snake",
+      "ColorIndex": 0
+    }
+  },
+  "NextColorIndex": 1
+}

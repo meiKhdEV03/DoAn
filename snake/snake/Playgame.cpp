@@ -20,15 +20,17 @@ struct Food
 	int x = 0, y = 0;
 };
 Food food;
+int randPoint(int Min, int Max) {
+	srand((int)time(NULL));
+	int temp = rand() % (Max - Min - 1) + Min + 1;
+	return temp;
+}
 void createSnake()
 {
 	score = 0;
 	snake.resize(6);
-	srand(time(NULL));
-	while (snake[0].x <= 40 || snake[0].x >= 60)
-		snake[0].x = rand();
-	while (snake[0].y <= 10 || snake[0].y >= 20)
-		snake[0].y = rand();
+	snake[0].x = randPoint(length_CS1 / 2 - 10, length_CS1 / 2 + 10);
+	snake[0].y = randPoint(width_CS / 2 - 4, width_CS / 2 + 4);
 	for (int i = 0; i < snake.size(); i++)
 	{
 		snake[i].x = snake[0].x - i;
@@ -70,14 +72,8 @@ bool isOutside(int x, int y)
 }
 void drawFood()
 {
-	food.x = 0;
-	food.y = 0;
-	srand(time(NULL));
-	while (!isAlive(food.x, food.y) || isOutside(food.x, food.y))
-	{
-		food.x = rand();
-		food.y = rand();
-	}
+	food.x = randPoint(1, length_CS1);
+	food.y = randPoint(1, width_CS);
 	gotoXY(food.x, food.y);
 	cout << "o";
 }
@@ -226,7 +222,7 @@ void goDown()
 	Sleep(speed / Level());
 }
 
-void plusBody()
+void addPoint()
 {
 	snake.resize(snake.size() + 1);
 	snake[snake.size() - 1].x = snake[snake.size() - 2].x0;

@@ -25,8 +25,9 @@ int main()
 			getMove(&isOver);
 			if (isEat()) {
 				writeScore();
-				plusBody();
+				addPoint();
 				drawFood();
+				drawSnake();
 			}
 		}
 		Sleep(1000);
