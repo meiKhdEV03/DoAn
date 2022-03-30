@@ -8,7 +8,7 @@ int main()
 {
 	FixConsoleWindow();
 	Nocursortype();
-	drawBoard(5);
+	drawBoard(0);
 	mainMenu();
 	system("cls");
 	drawBoard(0);

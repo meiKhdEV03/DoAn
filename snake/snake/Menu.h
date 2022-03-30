@@ -38,3 +38,5 @@ void highscoreMenu();
 void setStringBox();
 void introductionMenu();
 void clrscr();
+void title1();
+void title2();

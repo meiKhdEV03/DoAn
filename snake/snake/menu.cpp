@@ -66,23 +66,23 @@ void setStringBox()
 }
 void setBox()
 {
-	boxMainMenu[0] = { (length_CS1 - length_Box) / 2,5,length_Box ,width_Box };
-	boxMainMenu[1] = { (length_CS1 - length_Box) / 2,8,length_Box ,width_Box };
-	boxMainMenu[2] = { (length_CS1 - length_Box) / 2,11,length_Box ,width_Box };
-	boxMainMenu[3] = { (length_CS1 - length_Box) / 2,14,length_Box ,width_Box };
-	boxMainMenu[4] = { (length_CS1 - length_Box) / 2,17,length_Box ,width_Box };
-	boxMainMenu[5] = { (length_CS1 - length_Box) / 2,20,length_Box ,width_Box };
+	boxMainMenu[0] = { (length_CS1 - length_Box) / 2,10,length_Box ,width_Box };
+	boxMainMenu[1] = { (length_CS1 - length_Box) / 2,13,length_Box ,width_Box };
+	boxMainMenu[2] = { (length_CS1 - length_Box) / 2,16,length_Box ,width_Box };
+	boxMainMenu[3] = { (length_CS1 - length_Box) / 2,19,length_Box ,width_Box };
+	boxMainMenu[4] = { (length_CS1 - length_Box) / 2,22,length_Box ,width_Box };
+	boxMainMenu[5] = { (length_CS1 - length_Box) / 2,25,length_Box ,width_Box };
 
-	boxLevelMenu[0] = { (length_CS1 - length_Box) / 2,8,length_Box,width_Box };
-	boxLevelMenu[1] = { (length_CS1 - length_Box) / 2,11,length_Box,width_Box };
-	boxLevelMenu[2] = { (length_CS1 - length_Box) / 2,14,length_Box,width_Box };
-	boxLevelMenu[3] = { (length_CS1 - length_Box) / 2,17,length_Box,width_Box };
+	boxLevelMenu[0] = { (length_CS1 - length_Box) / 2,13,length_Box,width_Box };
+	boxLevelMenu[1] = { (length_CS1 - length_Box) / 2,16,length_Box,width_Box };
+	boxLevelMenu[2] = { (length_CS1 - length_Box) / 2,19,length_Box,width_Box };
+	boxLevelMenu[3] = { (length_CS1 - length_Box) / 2,22,length_Box,width_Box };
 
-	boxSkinMenu[0] = { (length_CS1 - length_Box) / 2,8,length_Box ,width_Box };
-	boxSkinMenu[1] = { (length_CS1 - length_Box) / 2,11,length_Box ,width_Box };
-	boxSkinMenu[2] = { (length_CS1 - length_Box) / 2,14,length_Box ,width_Box };
-	boxSkinMenu[3] = { (length_CS1 - length_Box) / 2,17,length_Box ,width_Box };
-	boxSkinMenu[4] = { (length_CS1 - length_Box) / 2,20,length_Box ,width_Box };
+	boxSkinMenu[0] = { (length_CS1 - length_Box) / 2,13,length_Box ,width_Box };
+	boxSkinMenu[1] = { (length_CS1 - length_Box) / 2,17,length_Box ,width_Box };
+	boxSkinMenu[2] = { (length_CS1 - length_Box) / 2,20,length_Box ,width_Box };
+	boxSkinMenu[3] = { (length_CS1 - length_Box) / 2,23,length_Box ,width_Box };
+	boxSkinMenu[4] = { (length_CS1 - length_Box) / 2,27,length_Box ,width_Box };
 }
 
 
@@ -195,6 +195,7 @@ void drawBoard(int speed) // thoi gian Sleep
 		printf("%c", 179);
 		Sleep(speed);
 	}
+	if (!isPlay) title1();
 }
 void drawBox(int x, int y, int length, int width)
 {
@@ -295,7 +296,7 @@ void drawSkinMenu(int cdt) // Ve tu` o bg den' o ed nhung to dam. o cdt
 		}
 		gotoXY(snakeMenu[5].x0, boxSkinMenu[cdt].y + 1);
 		cout << " ";
-		Sleep(100);
+		Sleep(50);
 	}
 }
 
@@ -356,7 +357,8 @@ void mainMenu()
 					}
 					else if (idMainMenu == 2) {
 						inSkin = true;
-						clrscr();
+						system("cls");
+						setColor(134);
 						drawBoard(0);
 						writeText(boxMainMenu[2].x - 3, boxMainMenu[2].y - 6, boxMainMenu[2].length + 6, strMainMenu[2], 228);
 						drawSkinMenu(0);
@@ -375,6 +377,9 @@ void mainMenu()
 					}
 					else {
 						inIntroduction = true;
+						setColor(134);
+						system("cls");
+						drawBoard(0);
 						introductionMenu();
 					}
 				}
@@ -412,7 +417,25 @@ void highscoreMenu() {
 	}
 }
 void introductionMenu() {
-
+	title2();
+	gotoXY(60, 20);
+	cout << "Do An: Snake-Game";
+	gotoXY(60, 21);
+	cout << "Nhom thuc hien: Nhom 17";
+	gotoXY(60, 22);
+	cout << "Giang vien: Truong Toan Thinh";
+	gotoXY(20, 19);
+	cout << "Danh sach thanh vien:";
+	gotoXY(20, 20);
+	cout << "21120473 - Tran Nguyen Gia Huy";
+	gotoXY(20, 21);
+	cout << "21120488 - Nguyen Dang Ba Kiet";
+	gotoXY(20, 22);
+	cout << "21120480 - Ta Ngoc Duy Khiem";
+	gotoXY(20, 23);
+	cout << "19120463 - Le Thanh Chau";
+	gotoXY(20, 24);
+	cout << "20120409 - Tran Thanh Tung";
 }
 void writeText(int x, int y, int length, string txt, int color)
 {
@@ -431,6 +454,32 @@ void writeText(int x, int y, int length, string txt, int color)
 	}
 	gotoXY(x + bien + 1, y + 1);
 	cout << txt;
+}
+void title1() {
+	setColor(135);
+	fstream fp;
+	fp.open("titleSmall.txt", ios::in);
+	string str = {};
+	int i = 0;
+	while (!fp.eof()) {
+		getline(fp, str);
+		gotoXY(20, 2 + i);
+		i++;
+		cout << str;
+	}
+}
+void title2() {
+	setColor(132);
+	fstream fp;
+	fp.open("titleBig.txt", ios::in);
+	string str = {};
+	int i = 0;
+	while (!fp.eof()) {
+		getline(fp, str);
+		gotoXY(5, 2 + i);
+		i++;
+		cout << str;
+	}
 }
 
 
