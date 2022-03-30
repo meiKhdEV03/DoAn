@@ -417,25 +417,26 @@ void highscoreMenu() {
 	}
 }
 void introductionMenu() {
-	title2();
+	setColor(142);
 	gotoXY(60, 20);
 	cout << "Do An: Snake-Game";
 	gotoXY(60, 21);
 	cout << "Nhom thuc hien: Nhom 17";
 	gotoXY(60, 22);
 	cout << "Giang vien: Truong Toan Thinh";
-	gotoXY(20, 19);
+	gotoXY(60, 24);
 	cout << "Danh sach thanh vien:";
-	gotoXY(20, 20);
+	gotoXY(60, 25);
 	cout << "21120473 - Tran Nguyen Gia Huy";
-	gotoXY(20, 21);
+	gotoXY(60, 26);
 	cout << "21120488 - Nguyen Dang Ba Kiet";
-	gotoXY(20, 22);
+	gotoXY(60, 27);
 	cout << "21120480 - Ta Ngoc Duy Khiem";
-	gotoXY(20, 23);
+	gotoXY(60, 28);
 	cout << "19120463 - Le Thanh Chau";
-	gotoXY(20, 24);
+	gotoXY(60, 29);
 	cout << "20120409 - Tran Thanh Tung";
+	title2();
 }
 void writeText(int x, int y, int length, string txt, int color)
 {
@@ -469,7 +470,7 @@ void title1() {
 	}
 }
 void title2() {
-	setColor(132);
+	setColor(135);
 	fstream fp;
 	fp.open("titleBig.txt", ios::in);
 	string str = {};
