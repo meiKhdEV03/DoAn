@@ -9,11 +9,6 @@ int tempDrt = -2; //Huong snake di
 int score = 0;
 int speed = 70;
 bool isStart = false;
-struct  Snake
-{
-	int x = 0, y = 0;
-	int x0 = 0, y0 = 0;
-};
 vector <Snake> snake;
 struct Food
 {
@@ -48,7 +43,6 @@ bool isAlive(int x, int y)
 }
 void drawSnake()
 {
-	setColor(12);
 	for (int i = 0; i < snake.size(); i++)
 	{
 		gotoXY(snake[i].x, snake[i].y);
@@ -73,7 +67,6 @@ bool isOutside(int x, int y)
 }
 void drawFood()
 {
-	setColor(12);
 	food.x = randPoint(1, length_CS1);
 	food.y = randPoint(1, width_CS);
 	gotoXY(food.x, food.y);

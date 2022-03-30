@@ -1,0 +1,5 @@
+﻿  menu.cpp
+D:\KTLT\DoAn\snake\snake\menu.cpp(94,14): warning C4838: conversion from 'int' to 'SHORT' requires a narrowing conversion
+D:\KTLT\DoAn\snake\snake\menu.cpp(94,17): warning C4838: conversion from 'int' to 'SHORT' requires a narrowing conversion
+D:\KTLT\DoAn\snake\snake\menu.cpp(417,25): warning C4267: 'initializing': conversion from 'size_t' to 'int', possible loss of data
+  snake.vcxproj -> D:\KTLT\DoAn\snake\x64\Debug\snake.exe

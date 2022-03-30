@@ -1,5 +1,10 @@
 #pragma once
 
+struct  Snake
+{
+	int x = 0, y = 0;
+	int x0 = 0, y0 = 0;
+};
 void createSnake();
 void drawSnake();
 bool isOutside(int x, int y);

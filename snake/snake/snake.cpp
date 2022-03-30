@@ -8,30 +8,16 @@ int main()
 {
 	FixConsoleWindow();
 	Nocursortype();
-	drawBoard(1);
-	while (1) {
-		bool isOver = false;
-		mainMenu();
-		system("cls");
-		drawBoard(0);
-		setColor(15);
-		createSnake();
-		drawSnake();
-		drawFood();
-		gotoXY(103, 5);
-		cout << " Score: ";
-		writeScore();
-		while (!isOver) {
-			getMove(&isOver);
-			if (isEat()) {
-				writeScore();
-				addPoint();
-				drawFood();
-				drawSnake();
-			}
-		}
-		Sleep(1000);
-	}
+	drawBoard(5);
+	mainMenu();
+	system("cls");
+	drawBoard(0);
+	setColor(132);
+	createSnake();
+	drawSnake();
+	drawFood();
+	while (check)
+		getMove(&check);
 	return 0;
 }
 

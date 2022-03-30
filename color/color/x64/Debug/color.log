@@ -1,0 +1,4 @@
+﻿  color.cpp
+D:\KTLT\DoAn\color\color\color.cpp(10,6): warning C4551: function call missing argument list
+D:\KTLT\DoAn\color\color\color.cpp(11,7): warning C4551: function call missing argument list
+  color.vcxproj -> D:\KTLT\DoAn\color\x64\Debug\color.exe
