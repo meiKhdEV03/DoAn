@@ -279,7 +279,7 @@ void drawSkinMenu(int cdt) // Ve tu` o bg den' o ed nhung to dam. o cdt
 		for (int i = 0; i < 6; i++) {
 			if (i == 0) {
 				snakeMenu[i].x0 = snakeMenu[i].x;
-				if (snakeMenu[i].x + 1 < boxSkinMenu[1].x + boxSkinMenu[1].length - 3)
+				if (snakeMenu[i].x + 1 <= boxSkinMenu[1].x + boxSkinMenu[1].length - 3)
 					snakeMenu[i].x++;
 				else snakeMenu[i].x = boxSkinMenu[1].x + 1;
 			}
@@ -433,20 +433,5 @@ void writeText(int x, int y, int length, string txt, int color)
 	cout << txt;
 }
 
-void writeTextSnake(int x, int y, int color, int pointStart) {
-	int length = boxLevelMenu[1].length;
-	int bien = 1;
-	for (int i = 1; i < 7; i++) {
-		if (pointStart + i < length) gotoXY(pointStart + i, y + 1);
-		else {
-			gotoXY(x + bien, y + 1);
-			bien++;
-		}
-		if (i != 6)
-			cout << "o";
-		else cout << "0";
-	}
-	gotoXY(pointStart, y + 1);
-	cout << " ";
-}
+
 

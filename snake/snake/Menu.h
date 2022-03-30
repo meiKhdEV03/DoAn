@@ -38,4 +38,3 @@ void highscoreMenu();
 void setStringBox();
 void introductionMenu();
 void clrscr();
-void writeTextSnake(int x, int y, int color, int pointStart);
