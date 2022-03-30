@@ -1,4 +1,5 @@
 #include "Menu.h"
+#include "Playgame.h"
 // boxColor 140
 // test1Color 228
 // test2Color 134
@@ -266,33 +267,35 @@ void drawSkinMenu(int cdt) // Ve tu` o bg den' o ed nhung to dam. o cdt
 	}
 	setColor(color_cdt);
 	int pointStart = boxSkinMenu[cdt].x + (boxSkinMenu[1].length - 6) / 2;
-	int tail = 0;
+	Snake snakeMenu[6];
+	snakeMenu[0] = { pointStart + 5,boxSkinMenu[0].y + 1,0,0 };
+	snakeMenu[1] = { pointStart + 4,boxSkinMenu[0].y + 1,0,0 };
+	snakeMenu[2] = { pointStart + 3,boxSkinMenu[0].y + 1,0,0 };
+	snakeMenu[3] = { pointStart + 2,boxSkinMenu[0].y + 1,0,0 };
+	snakeMenu[4] = { pointStart + 1,boxSkinMenu[0].y + 1,0,0 };
+	snakeMenu[5] = { pointStart ,boxSkinMenu[0].y + 1,0,0 };
 	while (1) {
-		if (pointStart < boxSkinMenu[cdt].x + boxSkinMenu[1].length - 3) {
-			if (_kbhit()) return;
-			int a = 0;
-			int bien;
-			for (int i = 0; i < 6; i++) {
-				bien = 1;
-				if (pointStart + i < boxSkinMenu[cdt].x + boxSkinMenu[1].length - 3)
-					gotoXY(pointStart + i, boxSkinMenu[cdt].y + 1);
-				else {
-					gotoXY(boxSkinMenu[cdt].x + bien + a, boxSkinMenu[cdt].y + 1);
-					bien++;
-				}
-				if (i == 5) cout << "0";
-				else cout << "o";
+		if (_kbhit()) return;
+		for (int i = 0; i < 6; i++) {
+			if (i == 0) {
+				snakeMenu[i].x0 = snakeMenu[i].x;
+				if (snakeMenu[i].x + 1 < boxSkinMenu[1].x + boxSkinMenu[1].length - 3)
+					snakeMenu[i].x++;
+				else snakeMenu[i].x = boxSkinMenu[1].x + 1;
 			}
-			if (bien != 1) a++;
-			if (pointStart == boxSkinMenu[cdt].x + 1)
-				gotoXY(boxSkinMenu[cdt].x + boxSkinMenu[1].length - 6, boxSkinMenu[cdt].y + 1);
-			else
-				gotoXY(pointStart - 1, boxSkinMenu[cdt].y + 1);
-			cout << " ";
-			Sleep(100);
-			pointStart++;
+			else {
+				snakeMenu[i].x0 = snakeMenu[i].x;
+				snakeMenu[i].x = snakeMenu[i - 1].x0;
+			}
 		}
-		else pointStart = boxSkinMenu[cdt].x + 1;
+		for (int i = 0; i < 6; i++) {
+			gotoXY(snakeMenu[i].x, boxSkinMenu[cdt].y + 1);
+			if (i == 0) cout << "0";
+			else cout << "o";
+		}
+		gotoXY(snakeMenu[5].x0, boxSkinMenu[cdt].y + 1);
+		cout << " ";
+		Sleep(100);
 	}
 }
 
